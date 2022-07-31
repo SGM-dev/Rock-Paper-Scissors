@@ -17,31 +17,70 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    return "You won, " + playerSelection + " beats " + computerSelection + ".";
+    playerScore++;
+    alert(
+      "You won, " +
+        playerSelection +
+        " beats " +
+        computerSelection +
+        "." +
+        " Player: " +
+        playerScore +
+        " Computer: " +
+        computerScore
+    );
   } else if (playerSelection === computerSelection) {
-    return "It's a draw.";
+    alert("It's a draw.");
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection == "paper")
   ) {
-    return "You lose, " + computerSelection + " beats " + playerSelection + ".";
+    computerScore++;
+    alert(
+      "You lose, " +
+        computerSelection +
+        " beats " +
+        playerSelection +
+        "." +
+        " Player: " +
+        playerScore +
+        " Computer: " +
+        computerScore
+    );
   } else {
     return "There is a disturbance in the Force.";
   }
 }
 
-// get choices of player and computer
+// create a 5 round game
 
+function game() {
+  for (let i = 0; i < 5; i++) {
+    // get choices of player and computer
 
-let playerSelection;
-  if (
-    playerSelection != "rock" ||
-    playerSelection != "paper" ||
-    playerSelection != "scissors"
-  ) {
-    playerSelection = prompt("Choose from rock, paper or scissors.").toLowerCase();
-  };
+    let playerSelection;
+    if (
+      playerSelection != "rock" ||
+      playerSelection != "paper" ||
+      playerSelection != "scissors"
+    ) {
+      playerSelection = prompt(
+        "Choose from rock, paper or scissors."
+      ).toLowerCase();
+    }
 
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+  }
 
-const computerSelection = getComputerChoice();
+  // Display result
+  
+  if (playerScore > computerScore) {
+    alert("Player won. Refresh the page or run game() on the console to play again.");
+  } else if (computerScore > playerScore) {
+    alert("Computer won. Refresh the page to play again or run game() on the console to play again.");
+  } else {
+    alert("It's a draw. Refresh the page to play again or run game() on the console to play again.");
+  }
+}
