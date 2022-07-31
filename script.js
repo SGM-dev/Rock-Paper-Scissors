@@ -75,12 +75,22 @@ function game() {
   }
 
   // Display result
-  
+
   if (playerScore > computerScore) {
-    alert("Player won. Refresh the page or run game() on the console to play again.");
+    alert(
+      "Player won. Refresh the page or run game() on the console to play again."
+    );
   } else if (computerScore > playerScore) {
-    alert("Computer won. Refresh the page to play again or run game() on the console to play again.");
+    alert(
+      "Computer won. Refresh the page to play again or run game() on the console to play again."
+    );
   } else {
-    alert("It's a draw. Refresh the page to play again or run game() on the console to play again.");
+    alert(
+      "It's a draw. Refresh the page to play again or run game() on the console to play again."
+    );
   }
 }
+
+window.onload = () => {
+  game();
+};
