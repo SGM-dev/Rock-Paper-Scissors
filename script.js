@@ -19,7 +19,13 @@ let playerChoice;
 
 function computerPlay() {
   return myTools[Math.floor(Math.random() * myTools.length)];
-}
+};
+
+function getPlayerChoice(e) {
+    let playerSelection= (e.target.id);
+    playerChoice = e.target.textContent;
+    playRound(playerSelection, computerPlay());
+  };
 
 // define one round of game
 function playRound(playerSelection, computerSelection) {
@@ -42,4 +48,23 @@ function playRound(playerSelection, computerSelection) {
   }
   checkWinner();
 };
+
+const result = {
+    computer: ["Computer wins!", "red"],
+    player: ["Player wins!","green"],
+    tie: ["It's a tie!","blue"]
+};
+
+function checkWinner() {
+    if (compScore === 5 || playerScore === 5) {
+        if (compScore === playerScore) {
+            updateWinner('tie');
+        } else {
+            let win = `${(compScore > playerScore) ? 'computer': 'player'}`;
+            updateWinner(win);
+        }
+    }
+};
+
+
 
