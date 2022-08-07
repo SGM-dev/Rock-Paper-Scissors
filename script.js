@@ -18,5 +18,28 @@ let compScore = 0;
 let playerChoice;
 
 function computerPlay() {
-    return myTools[Math.floor(Math.random() * myTools.length)];
+  return myTools[Math.floor(Math.random() * myTools.length)];
 }
+
+// define one round of game
+function playRound(playerSelection, computerSelection) {
+  if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    playerPoints.textContent = ++playerScore;
+    roundResults.textContent = `You win! ${playerChoice} beats ${computerSelection}.`;
+  } else if (
+    (computerSelection === "rock" && playerSelection === "scissors") ||
+    (computerSelection === "paper" && playerSelection === "rock") ||
+    (computerSelection === "scissors" && playerSelection == "paper")
+  ) {
+    computerPoints.textContent = ++compScore;
+    roundResults.textContent = `You lose! ${computerSelection} beats ${playerChoice}.`;
+  } else {
+    roundResults.textContent = `Tie!`;
+  }
+  checkWinner();
+};
+
