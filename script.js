@@ -21,7 +21,7 @@ function computerPlay() {
   return myTools[Math.floor(Math.random() * myTools.length)];
 }
 
-// define one round of game
+// defines one round of game
 function playRound(playerSelection, computerSelection) {
   if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -41,14 +41,16 @@ function playRound(playerSelection, computerSelection) {
     roundResults.textContent = `Tie!`;
   }
   checkWinner();
-}
+};
 
+// defines the game's result
 const result = {
   computer: ["Computer wins!", "red"],
   player: ["Player wins!", "green"],
   tie: ["It's a tie!", "blue"],
 };
 
+// check winner
 function checkWinner() {
   if (compScore === 5 || playerScore === 5) {
     if (compScore === playerScore) {
@@ -60,14 +62,16 @@ function checkWinner() {
   }
 };
 
+// after checking scores, update results and stop the game
 function updateWinner(winner) {
-  roundResults.textContent = winnerResults[winner][0];
-  roundResults.style.color = winnerResults[winner][1];
+  roundResults.textContent = result[winner][0];
+  roundResults.style.color = result[winner][1];
   optionBtn.forEach((button) => {
     button.removeEventListener("click", getPlayerChoice);
   });
 };
 
+//get player scores
 function getPlayerChoice(e) {
     let playerSelection = e.target.id;
     playerChoice = e.target.textContent;
