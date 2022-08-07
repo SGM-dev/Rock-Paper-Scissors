@@ -11,3 +11,12 @@ resetBtn.addEventListener("click", () => location.reload());
 optionBtn.forEach((button) => {
   button.addEventListener("click", getPlayerChoice);
 });
+
+let myTools = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let compScore = 0;
+let playerChoice;
+
+function computerPlay() {
+    return myTools[Math.floor(Math.random() * myTools.length)];
+}
